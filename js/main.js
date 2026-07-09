@@ -638,9 +638,6 @@ function animate(){
         updatePickups();
     }
 
-    if(typeof updateWallBuy === "function"){
-        updateWallBuy();
-    }
 
     if(typeof updateUI === "function"){
         updateUI();
@@ -669,9 +666,6 @@ window.startGame = function(){
         initMysteryBox();
     }
 
-    if(typeof initWallBuy === "function"){
-        initWallBuy();
-    }
 
     animate();
 
