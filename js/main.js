@@ -500,6 +500,66 @@ makeWall(
         1
     );
 
+    /* ==========================
+   RECEPTION DESK
+========================== */
+
+const receptionDesk = new THREE.Mesh(
+
+    new THREE.CylinderGeometry(
+        6,
+        6,
+        2.5,
+        40
+    ),
+
+    new THREE.MeshStandardMaterial({
+        color:0x666666
+    })
+
+);
+
+receptionDesk.position.set(
+    30,
+    1.25,
+    0
+);
+
+receptionDesk.castShadow = true;
+receptionDesk.receiveShadow = true;
+
+scene.add(receptionDesk);
+
+if(typeof addCollider === "function"){
+    addCollider(receptionDesk);
+}
+
+const deskTop = new THREE.Mesh(
+
+new THREE.CylinderGeometry(
+    6.3,
+    6.3,
+    0.25,
+    40
+),
+
+    new THREE.MeshStandardMaterial({
+        color:0x333333
+    })
+
+);
+
+deskTop.position.set(
+    30,
+    2.65,
+    0
+);
+
+deskTop.castShadow = true;
+deskTop.receiveShadow = true;
+
+scene.add(deskTop);
+
 }
 /* ==========================================
    WINDOW RESIZE
