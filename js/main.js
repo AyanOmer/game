@@ -467,7 +467,7 @@ makeWall(
     10
 );
 
-    /* ---------- Right Wall ---------- */
+     /* ---------- Right Wall ---------- */
 
     makeWall(
         50,
