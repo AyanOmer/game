@@ -76,8 +76,6 @@ createSecondRoom();
 
 createThirdRoom();   // <-- ADD THIS LINE
 
-createStairs();
-
 window.addEventListener("resize", onResize);
 
 }
@@ -171,43 +169,14 @@ function createFloor(){
     );
 
     /* ==================================
-       ROOM 3 (LEFT OF HOLE)
+       ROOM 3 
     ================================== */
-
-    addFloor(
-        18,
-        0,
-        16,
-        40
-    );
-
-    /* ROOM 3 (RIGHT OF HOLE) */
-
-    addFloor(
-        42,
-        0,
-        16,
-        40
-    );
-
-
-    /* ROOM 3 (TOP OF HOLE) */
-
 addFloor(
     30,
-    -14,
-    8,
-    12
+    0,
+    40,
+    40
 );
-
-    /* ROOM 3 (BOTTOM OF HOLE) */
-
-    addFloor(
-        30,
-        14,
-        8,
-        12
-    );
 
 }
 
@@ -531,233 +500,7 @@ makeWall(
         1
     );
 
-    /* =====================================
-       CENTER TRAINING BLOCK
-    ===================================== */
-
-/* ===========================
-   STAIR PIT
-=========================== */
-
-
-
-const wallMat = new THREE.MeshStandardMaterial({
-    color:0x444444
-});
-
-const floorMat = new THREE.MeshStandardMaterial({
-    color:0x222222
-});
-
-/* Bottom */
-
-const bottom = new THREE.Mesh(
-
-    new THREE.BoxGeometry(8,0.3,8),
-
-    floorMat
-
-);
-
-bottom.position.set(
-    30,
-    -5,
-    0
-);
-
-scene.add(bottom);
-
-if(typeof addCollider === "function"){
-    addCollider(bottom);
 }
-
-/* Left Wall */
-
-const left = new THREE.Mesh(
-
-    new THREE.BoxGeometry(0.3,6,8),
-
-    wallMat
-
-);
-
-left.position.set(26,-3,0);
-
-scene.add(left);
-
-if(typeof addCollider === "function"){
-    addCollider(left);
-}
-
-const right = left.clone();
-
-right.position.set(34,-3,0);
-
-scene.add(right);
-
-if(typeof addCollider === "function"){
-    addCollider(right);
-}
-
-
-/* ==========================
-   PIT RAILINGS
-========================== */
-
-const railMat = new THREE.MeshStandardMaterial({
-    color:0x888888
-});
-
-function makeRail(x,y,z,w,h,d){
-
-    const rail = new THREE.Mesh(
-
-        new THREE.BoxGeometry(w,h,d),
-
-        railMat
-
-    );
-
-    rail.position.set(x,y,z);
-
-    scene.add(rail);
-
-}
-
-/* LEFT */
-
-makeRail(
-    26,
-    1,
-    0,
-    0.2,
-    1,
-    8
-);
-
-/* RIGHT */
-
-makeRail(
-    34,
-    1,
-    0,
-    0.2,
-    1,
-    8
-);
-
-/* BACK */
-
-makeRail(
-    30,
-    1,
-    -4,
-    8,
-    1,
-    0.2
-);
-
-}
-
-
-
-/* ==========================================
-   STAIRWELL
-========================================== */
-
-
-function createStairs(){
-
-    const stepMaterial = new THREE.MeshStandardMaterial({
-        color:0x555555
-    });
-
-    const stairWidth = 8;
-    const stepDepth = 0.8;
-    const stepHeight = 0.3;
-    const steps = 10;
-
-    for(let i = 0; i < steps; i++){
-
-        const step = new THREE.Mesh(
-
-            new THREE.BoxGeometry(
-                stairWidth,
-                stepHeight,
-                stepDepth
-            ),
-
-            stepMaterial
-
-        );
-
-        step.position.set(
-
-    30,
--0.15 - (i * stepHeight),
-3 + (i * stepDepth)
-
-);
-
-        step.castShadow = true;
-        step.receiveShadow = true;
-
-        scene.add(step);
-
-    }
-
-const landing = new THREE.Mesh(
-
-    new THREE.BoxGeometry(
-        9,
-        0.4,
-        4
-    ),
-
-    new THREE.MeshStandardMaterial({
-        color:0x555555
-    })
-
-);
-
-landing.position.set(
-    30,
-    -3.15,
-    11
-);
-
-scene.add(landing);
-
-const stairRamp = new THREE.Mesh(
-
-    new THREE.BoxGeometry(
-        8,
-        0.5,
-        10
-    ),
-
-    new THREE.MeshStandardMaterial({
-        visible:false
-    })
-
-);
-
-stairRamp.position.set(
-    30,
-    -2.1,
-    7
-);
-
-stairRamp.rotation.x = -Math.atan(3 / 8);
-
-scene.add(stairRamp);
-
-if(typeof addCollider === "function"){
-    addCollider(stairRamp);
-}
-
-}
-
 /* ==========================================
    WINDOW RESIZE
 ========================================== */
